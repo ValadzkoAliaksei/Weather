@@ -50,7 +50,7 @@ export const App = () => {
       console.log(favorites);
     }
   }
-
+  
   return (
     <div className="App">
       <Route exact path='/'>
