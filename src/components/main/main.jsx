@@ -17,15 +17,21 @@ export const Main = ({
   favorites
 }) => (
   <div className="main">
-    <TextField value={city} onChange={onChangeCity} />
-    <br/>
-    <br/>
-    <Button variant="contained" color="primary" onClick={() => {onShow(city)}}>Показать</Button>
-    <br/>
-    <br/>
-    <Button variant="contained" color="secondary" onClick={onAdd}>Добавить в избранное</Button>
-    <br/>
-    {favorites.map(item => (<Link to={`/${item.link}`} onClick={() => { onShow(item.name)}}>{item.name}<br/></Link>))}
-    <Weather isLoaded={isLoaded} isError={isError} weather={weather}/>
+    <div className="mainContent">
+      <div className="form">
+        <div className="textInput">
+          <TextField label="Outlined" variant="outlined" value={city} onChange={onChangeCity}/>
+        </div>
+        <div className="buttons">
+          <Button variant="contained" color="secondary" onClick={() => {onShow(city)}}>Показать</Button>
+          <Button variant="contained" color="secondary" onClick={onAdd}>Добавить в избранное</Button>
+        </div>
+        <Weather isLoaded={isLoaded} isError={isError} weather={weather}/>
+      </div>
+      <div className="favorite">
+        <h2>Избранное</h2>
+        {favorites.map(item => (<Link to={`/${item.link}`} onClick={() => { onShow(item.name)}} className="favoriteLink">{item.name}</Link>))}
+      </div>
+    </div>
   </div>
 )
