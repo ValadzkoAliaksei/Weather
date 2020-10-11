@@ -5,7 +5,7 @@ import './weather.css';
 export const Weather = ({isLoaded, isError, weather}) => (
   <div className="weather">
     { isLoaded && !isError && (
-      <div>
+      <div className="weatherLoaded">
         <div>Температура: {weather.main.temp}&deg;С</div>
         <div>Давление: {weather.main.pressure}мм.рт.ст.</div>
         <div>Влажность: {weather.main.humidity}%</div>
