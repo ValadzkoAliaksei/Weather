@@ -1,11 +1,11 @@
 const initialState = {
-	city: 'Орша',
-	weather: {
-		isLoaded: false,
-		isError: false,
-		data: ''
-	},
-	favorites: [
+  city: 'Орша',
+  weather: {
+    isLoaded: false,
+    isError: false,
+    data: {},
+  },
+  favorites: [
     {
       name: 'Орша',
       link: "Orsha",
@@ -18,33 +18,43 @@ const initialState = {
 };
 
 export const reducer = (state = initialState, action) => {
-	switch (action.type) {
-		case 'CHANGE_CITY':
-			return {
-				...state,
-				city: action,
-			}
-		case 'ON_SHOW_SUCCESS': {
-			const { data } = action;
-			return {
-				...state,
-				weather: {
-					...state.weather,
-					isLoaded: true,
-					data: data,
-				}
-			}
-		}
-		case 'ON_SHOW_FAIL': {
-			return {
-				...state,
-				weather: {
-					...state.weather,
-					isFail: true,
-				}
-			}
-		}
-		default:
-			return state;
-	}
+  switch (action.type) {
+    case 'CHANGE_CITY':
+      return {
+        ...state,
+        city: action,
+      }
+    case 'ON_SHOW_REQUEST': {
+      return {
+        ...state,
+        weather: {
+          ...state.weather,
+          isLoading: true,
+          isError: false,
+        }
+      }
+    }
+    case 'ON_SHOW_SUCCESS': {
+      const { data } = action;
+      return {
+        ...state,
+        weather: {
+          ...state.weather,
+          isLoaded: true,
+          data: data,
+        }
+      }
+    }
+    case 'ON_SHOW_FAIL': {
+      return {
+        ...state,
+        weather: {
+          ...state.weather,
+          isError: true,
+        }
+      }
+    }
+    default:
+      return state;
+  }
 }
