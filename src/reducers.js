@@ -54,6 +54,19 @@ export const reducer = (state = initialState, action) => {
         }
       }
     }
+    case 'ADD_CITY': {
+      const { value } = action;
+      return {
+        ...state,
+        favorites: [
+          ...state.favorites,
+          {
+            name: value.name,
+            link: value.link,
+          },
+        ]
+      }
+    }
     default:
       return state;
   }

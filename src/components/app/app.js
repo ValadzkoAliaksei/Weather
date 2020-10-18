@@ -13,7 +13,8 @@ const App = (props) => {
     favorites,
     onShowRequest,
     onShowSuccess,
-    onShowFail
+    onShowFail,
+    onAdd,
   } = props;
 
   const [city, setCity] = useState("");
@@ -35,15 +36,15 @@ const App = (props) => {
       }
     }
   };
-  const onAdd = () => {
-    // if (store.city && store.favorites.findIndex(item => item.name === store.city) === -1 ) {
-    //   const newObject = {
-    //     name: store.city,
-    //     link: store.weather.data.name,
-    //   };
-    //   store.city && setFavorite([...favorites, newObject]);
-    //   console.log(favorites);
-    // }
+  const onAddFavorites = () => {
+    if (city && favorites.findIndex(item => item.name === city) === -1 ) {
+      const newObject = {
+        name: city,
+        link: weather.data.name,
+      };
+      onAdd(newObject);
+      console.log(favorites);
+    }
   }
   return (
     <div className="App">
@@ -55,7 +56,7 @@ const App = (props) => {
           weather={weather.data}
           onChangeCity={onChangeCity}
           onShow={onShow}
-          onAdd={onAdd}
+          onAdd={onAddFavorites}
           favorites={favorites}
         />
       </Route>
