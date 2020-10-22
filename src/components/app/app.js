@@ -13,11 +13,11 @@ const App = () => {
   const favorites = useSelector (state => state.favorites);
   const weather = useSelector (state => state.weather);
 
-
-  const onAdd = useDispatch({ type: 'ADD_CITY', value });
-  const onShowRequest = useDispatch({ type: 'ON_SHOW_REQUEST' });
-  const onShowSuccess = useDispatch({ type: 'ON_SHOW_SUCCESS', data });
-  const onShowFail = useDispatch({ type: 'ON_SHOW_FAIL' });
+  const dispatch = useDispatch ();
+  const onAdd = (value) => dispatch({ type: 'ADD_CITY', value });
+  const onShowRequest = () => dispatch({ type: 'ON_SHOW_REQUEST' });
+  const onShowSuccess = (data) => dispatch({ type: 'ON_SHOW_SUCCESS', data });
+  const onShowFail = () => dispatch({ type: 'ON_SHOW_FAIL' });
 
   const onChangeCity = (event) => {
     setCity(event.target.value);
