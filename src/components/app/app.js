@@ -1,24 +1,24 @@
 import React, { useState } from 'react';
-import { Link, Route} from 'react-router-dom';
-import { connect } from 'react-redux';
+import { Link, Route } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { Weather } from '../weather';
 import { Main } from '../main';
 
 import './app.css';
 
-const App = (props) => {
-  const {
-    weather,
-    favorites,
-    onShowRequest,
-    onShowSuccess,
-    onShowFail,
-    onAdd,
-  } = props;
+const App = () => {
 
   const [city, setCity] = useState("");
-  
+  const favorites = useSelector (state => state.favorites);
+  const weather = useSelector (state => state.weather);
+
+  const dispatch = useDispatch ();
+  const onAdd = (value) => dispatch({ type: 'ADD_CITY', value });
+  const onShowRequest = () => dispatch({ type: 'ON_SHOW_REQUEST' });
+  const onShowSuccess = (data) => dispatch({ type: 'ON_SHOW_SUCCESS', data });
+  const onShowFail = () => dispatch({ type: 'ON_SHOW_FAIL' });
+
   const onChangeCity = (event) => {
     setCity(event.target.value);
   };
@@ -65,16 +65,4 @@ const App = (props) => {
   );
 }
 
-const mapStateToProps = (state) => ({
-  favorites: state.favorites,
-  weather: state.weather,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onAdd: (value) => dispatch({type: 'ADD_CITY', value }),
-  onShowRequest: () => dispatch({ type: 'ON_SHOW_REQUEST' }),
-  onShowSuccess: (data) => dispatch({ type: 'ON_SHOW_SUCCESS', data}),
-  onShowFail: () => dispatch({ type: 'ON_SHOW_FAIL' }),
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
