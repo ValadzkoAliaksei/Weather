@@ -11,7 +11,7 @@ function* getWeather({ item }) {
   }
 }
 
-function* AddCity(city, favorites, weather) {
+function* AddCity({city, favorites, weather}) {
   if (city && favorites.findIndex(item => item.name === city) === -1 ) {
     const newObject = {
       name: city,
@@ -24,7 +24,7 @@ function* AddCity(city, favorites, weather) {
 
 function* rootSaga() {
   yield takeLatest('ON_SHOW_REQUEST', getWeather);
-  yield takeLatest('ADD_CITY', AddCity);
+  yield takeLatest('ADD_F', AddCity);
 
 };
 

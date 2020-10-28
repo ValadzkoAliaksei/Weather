@@ -15,6 +15,7 @@ const App = () => {
 
   const dispatch = useDispatch ();
 
+
   const onChangeCity = (event) => {
     setCity(event.target.value);
   };
@@ -25,8 +26,8 @@ const App = () => {
     }
   };
   
-  const onAddFavorites = (city, favorites, weather) => {
-    dispatch({ type: 'ADD_CITY', city, favorites, weather});
+  const onAddFavorites = (value) => {
+    dispatch({ type: 'ADD_F', value, city, favorites, weather });
   }
   return (
     <div className="App">
