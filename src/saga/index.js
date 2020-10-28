@@ -11,8 +11,21 @@ function* getWeather({ item }) {
   }
 }
 
+function* AddCity(city, favorites, weather) {
+  if (city && favorites.findIndex(item => item.name === city) === -1 ) {
+    const newObject = {
+      name: city,
+      link: weather.data.name,
+    };
+    yield put({ type: 'ADD_CITY', value: newObject});
+    console.log(newObject);
+  }
+}
+
 function* rootSaga() {
   yield takeLatest('ON_SHOW_REQUEST', getWeather);
+  yield takeLatest('ADD_CITY', AddCity);
+
 };
 
 export default rootSaga;

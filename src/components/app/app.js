@@ -14,7 +14,6 @@ const App = () => {
   const weather = useSelector (state => state.weather);
 
   const dispatch = useDispatch ();
-  const onAdd = (value) => dispatch({ type: 'ADD_CITY', value });
 
   const onChangeCity = (event) => {
     setCity(event.target.value);
@@ -26,15 +25,8 @@ const App = () => {
     }
   };
   
-  const onAddFavorites = () => {
-    if (city && favorites.findIndex(item => item.name === city) === -1 ) {
-      const newObject = {
-        name: city,
-        link: weather.data.name,
-      };
-      onAdd(newObject);
-      console.log(favorites);
-    }
+  const onAddFavorites = (city, favorites, weather) => {
+    dispatch({ type: 'ADD_CITY', city, favorites, weather});
   }
   return (
     <div className="App">
