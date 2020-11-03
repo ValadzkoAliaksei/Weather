@@ -14,37 +14,20 @@ const App = () => {
   const weather = useSelector (state => state.weather);
 
   const dispatch = useDispatch ();
-  const onAdd = (value) => dispatch({ type: 'ADD_CITY', value });
-  const onShowRequest = () => dispatch({ type: 'ON_SHOW_REQUEST' });
-  const onShowSuccess = (data) => dispatch({ type: 'ON_SHOW_SUCCESS', data });
-  const onShowFail = () => dispatch({ type: 'ON_SHOW_FAIL' });
+
 
   const onChangeCity = (event) => {
     setCity(event.target.value);
   };
   
-  const onShow = async (item) => {
+  const onShow = (item) => {
     if (item) {
-      onShowRequest();
-      try {
-        const weatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${item}&appid=f4a3e13f259dfdbd23f06c3973018636&units=metric&`);
-        const weatherNow = await weatherResponse.json();
-        if (weatherNow.cod !== 200 )  throw new Error("Ошибка!");
-        onShowSuccess(weatherNow);
-      } catch {
-        onShowFail();
-      }
+      dispatch({ type: 'ON_SHOW_REQUEST', item });
     }
   };
-  const onAddFavorites = () => {
-    if (city && favorites.findIndex(item => item.name === city) === -1 ) {
-      const newObject = {
-        name: city,
-        link: weather.data.name,
-      };
-      onAdd(newObject);
-      console.log(favorites);
-    }
+  
+  const onAddFavorites = (value) => {
+    dispatch({ type: 'ADD_F', value, city, favorites, weather });
   }
   return (
     <div className="App">
