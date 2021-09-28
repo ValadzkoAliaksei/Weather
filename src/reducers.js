@@ -41,7 +41,7 @@ export const reducer = (state = initialState, action) => {
         weather: {
           ...state.weather,
           isLoaded: true,
-          data: data,
+          data,
         },
       };
     }
