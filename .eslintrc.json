@@ -46,7 +46,11 @@
     "import/named": 2,
     "import/namespace": 2,
     "import/default": 2,
-    "import/export": 2
+    "import/export": 2,
+    "import/prefer-default-export": "off",
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": ["error"],
+    "react/prop-types": "off"
   },
   "settings": {
     "jest": {

@@ -41,15 +41,12 @@ const App = () => {
           favorites={favorites}
         />
       </Route>
-      <Route
-        path='/:id'
-        children={
-          <div>
-            <Weather isLoaded={weather.isLoaded} isError={weather.isError} weather={weather.data} />{' '}
-            <Link to=''>Назад</Link>
-          </div>
-        }
-      />
+      <Route path='/:id'>
+        <div>
+          <Weather isLoaded={weather.isLoaded} isError={weather.isError} weather={weather.data} />{' '}
+          <Link to='/'>Назад</Link>
+        </div>
+      </Route>
     </div>
   );
 };

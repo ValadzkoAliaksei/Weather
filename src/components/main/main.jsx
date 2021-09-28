@@ -31,12 +31,13 @@ export const Main = ({ city, isLoaded, isError, weather, onChangeCity, onShow, o
       </div>
       <div className='favorite'>
         <h2>Избранное</h2>
-        {favorites.map((item) => (
+        {favorites.map((item, index) => (
           <Link
             to={`/${item.link}`}
             onClick={() => {
               onShow(item.name);
             }}
+            key={index.toString()}
             className='favoriteLink'
           >
             {item.name}
