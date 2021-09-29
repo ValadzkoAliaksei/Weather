@@ -60,7 +60,7 @@
     "lint-staged": "^11.1.2"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": "eslint --cache --fix",
-    "*.{css,scss,sass}": "stylelint --fix"
+    "src/**/*.{js,jsx,ts,tsx}": ["eslint --cache --fix", "prettier --write"],
+    "src/**/*.{css,scss,sass}": ["stylelint --fix", "prettier --write"]
   }
 }
