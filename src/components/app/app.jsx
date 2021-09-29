@@ -44,7 +44,7 @@ const App = () => {
       <Route path='/:id'>
         <div>
           <Weather isLoaded={weather.isLoaded} isError={weather.isError} weather={weather.data} />{' '}
-          <Link to='/'>Назаl</Link>
+          <Link to='/'>Назад</Link>
         </div>
       </Route>
     </div>
