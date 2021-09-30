@@ -20,7 +20,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prepare": "husky install",
+    "lint-js": "eslint ./src/ --ext .js,.jsx,.ts,.tsx --fix",
+    "lint-css": "stylelint ./src/**/*.{css,scss,sass} --fix",
+    "lint": "npm run lint-js && npm run lint-css"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -50,6 +54,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.26.0",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^7.0.0",
     "prettier": "2.4.1",
     "stylelint": "^13.13.1",
     "stylelint-config-prettier": "^8.0.2",
