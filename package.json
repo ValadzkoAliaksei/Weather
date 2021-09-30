@@ -39,6 +39,8 @@
     ]
   },
   "devDependencies": {
+    "@commitlint/cli": "^13.2.0",
+    "@commitlint/config-conventional": "^13.2.0",
     "@typescript-eslint/eslint-plugin": "^4.31.2",
     "@typescript-eslint/parser": "^4.31.2",
     "eslint": "^7.32.0",
@@ -51,16 +53,22 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.26.0",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^7.0.0",
+    "lint-staged": "^11.1.2",
     "prettier": "2.4.1",
     "stylelint": "^13.13.1",
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-standard": "^22.0.0",
-    "stylelint-prettier": "^1.2.0",
-    "husky": "^7.0.0",
-    "lint-staged": "^11.1.2"
+    "stylelint-prettier": "^1.2.0"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx}": ["eslint --cache --fix", "prettier --write"],
-    "src/**/*.{css,scss,sass}": ["stylelint --fix", "prettier --write"]
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "eslint --cache --fix",
+      "prettier --write"
+    ],
+    "src/**/*.{css,scss,sass}": [
+      "stylelint --fix",
+      "prettier --write"
+    ]
   }
 }
