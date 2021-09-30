@@ -39,6 +39,8 @@
     ]
   },
   "devDependencies": {
+    "@commitlint/cli": "^13.2.0",
+    "@commitlint/config-conventional": "^13.2.0",
     "@typescript-eslint/eslint-plugin": "^4.31.2",
     "@typescript-eslint/parser": "^4.31.2",
     "eslint": "^7.32.0",
@@ -60,7 +62,13 @@
     "stylelint-prettier": "^1.2.0"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx}": ["eslint --fix", "prettier --write"],
-    "src/**/*.{css,scss,sass}": ["stylelint --fix", "prettier --write"]
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "src/**/*.{css,scss,sass}": [
+      "stylelint --fix",
+      "prettier --write"
+    ]
   }
 }
