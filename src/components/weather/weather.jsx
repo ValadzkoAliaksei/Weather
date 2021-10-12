@@ -2,10 +2,10 @@ import React from 'react';
 
 import './weather.css';
 
-export const Weather = ({isLoaded, isError, weather}) => (
-  <div className="weather">
-    { isLoaded && !isError && (
-      <div className="weatherLoaded">
+export const Weather = ({ isLoaded, isError, weather }) => (
+  <div className='weather'>
+    {isLoaded && !isError && (
+      <div className='weatherLoaded'>
         <div>Температура: {weather.main.temp}&deg;С</div>
         <div>Давление: {weather.main.pressure}мм.рт.ст.</div>
         <div>Влажность: {weather.main.humidity}%</div>
@@ -13,6 +13,6 @@ export const Weather = ({isLoaded, isError, weather}) => (
         <div>Облачность: {weather.clouds.all}%</div>
       </div>
     )}
-    { isError && (<div>Произошла ошибка</div>)}
+    {isError && <div>Произошла ошибка</div>}
   </div>
-)
+);

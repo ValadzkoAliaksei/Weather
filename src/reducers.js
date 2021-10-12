@@ -8,11 +8,11 @@ const initialState = {
   favorites: [
     {
       name: 'Орша',
-      link: "Orsha",
+      link: 'Orsha',
     },
     {
       name: 'Анталия',
-      link: "Antalya Province",
+      link: 'Antalya Province',
     },
   ],
 };
@@ -23,7 +23,7 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         city: action,
-      }
+      };
     case 'ON_SHOW_REQUEST': {
       return {
         ...state,
@@ -31,8 +31,8 @@ export const reducer = (state = initialState, action) => {
           ...state.weather,
           isLoading: true,
           isError: false,
-        }
-      }
+        },
+      };
     }
     case 'ON_SHOW_SUCCESS': {
       const { data } = action;
@@ -41,9 +41,9 @@ export const reducer = (state = initialState, action) => {
         weather: {
           ...state.weather,
           isLoaded: true,
-          data: data,
-        }
-      }
+          data,
+        },
+      };
     }
     case 'ON_SHOW_FAIL': {
       return {
@@ -51,8 +51,8 @@ export const reducer = (state = initialState, action) => {
         weather: {
           ...state.weather,
           isError: true,
-        }
-      }
+        },
+      };
     }
     case 'ADD_CITY': {
       const { value } = action;
@@ -64,10 +64,10 @@ export const reducer = (state = initialState, action) => {
             name: value.name,
             link: value.link,
           },
-        ]
-      }
+        ],
+      };
     }
     default:
       return state;
   }
-}
+};
