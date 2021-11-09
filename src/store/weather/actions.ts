@@ -4,7 +4,7 @@ import { IWeather } from './types';
 
 export const showWeatherSuccess = (payload: IWeather) => <const>{ type: TYPES.ON_SHOW_SUCCESS, payload };
 
-export const showWeatherError = () => <const>{ type: TYPES.ON_SHOW_FAIL };
+export const showWeatherError = () => ({ type: TYPES.ON_SHOW_FAIL } as const);
 
 export const onShowWeatherRequest = (payload: string) => <const>{ type: TYPES.ON_SHOW_REQUEST, payload };
 
